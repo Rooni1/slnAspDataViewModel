@@ -7,6 +7,10 @@
     align-items:self-start;
     background-color: lightblue;
 }
-.Addperson{
-    flex-direction:column;
+.searchform{
+    margin-top:5px;
+    text-align:center;
+    background-color:lightblue;
 }
+.infocontainer{
+   }

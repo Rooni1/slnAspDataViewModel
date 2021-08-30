@@ -1,5 +1,5 @@
 ﻿@model AspDataViewModel.ViewModels.PeopleViewModel
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 
 <h2>People Management</h2>
 
@@ -21,42 +21,33 @@
             
 
         </form>
-        <form asp-action="FindByViewModel" method="post">
-            <label asp-for="FilterText"></label>
+        <form class="searchform" asp-action="FindByViewModel" method="post">
+            <label asp-for="FilterText">Serach Person </label>
             <input asp-for="FilterText" />
         </form>
 
 
-  
+        
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Person Id</th>
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>City</th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="infocontainer">
+        <div class="row fs-5">
+            <div class="col">Person Id</div>
+            <div class="col">Name</div>
+            <div class="col">Phone Number</div>
+            <div class="col"> City</div>
+            <div class="col"></div>
+            <div class="col"></div>
 
+        </div>
             @foreach (var item in Model.peopleList)
-            {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.Name</td>
-                    <td>@item.PhoneNumber</td>
-                    <td>@item.City</td>
-                    <td><a asp-action="UpDate" asp-route-id="@item.Id">Edit</a></td>
-                    <td><a asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
-                </tr>
-            }
+             {
+                
+                <partial name="_peoplePartialView.cshtml" model="item"/> 
+                
+              
+             }
 
-        </tbody>
-
-    </table>
+    </div>
 
 
 
