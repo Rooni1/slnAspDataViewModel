@@ -1,0 +1,12 @@
+﻿body {
+}
+.flexcontainer {
+    display: flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    align-items:self-start;
+    background-color: lightblue;
+}
+.Addperson{
+    flex-direction:column;
+}

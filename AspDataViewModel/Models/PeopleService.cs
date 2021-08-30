@@ -11,7 +11,7 @@ namespace AspDataViewModel.Models
 {
     public class PeopleService : IPeopleService
     {
-        readonly IPeopleRepo _peopleRepo;
+        IPeopleRepo _peopleRepo;
         public PeopleService(IPeopleRepo peopleRepo)
         {
             _peopleRepo = peopleRepo;
@@ -22,39 +22,65 @@ namespace AspDataViewModel.Models
         {
 
             MemoryPeopleRepo MPRepo = new MemoryPeopleRepo();
-            Person newperson = MPRepo.Create(CPview.Name,
-                                            CPview.PhoneNumber, CPview.CityName);
-            return newperson;
+
+            //Person newperson = MPRepo.Create(CPview);
+
+            CreatePersonViewModel newperson = new CreatePersonViewModel
+            {
+                Name = CPview.Name,
+                City = CPview.City,
+                PhoneNumber = CPview.PhoneNumber
+            };
+            return MPRepo.Create(newperson);
+            //return newperson;
 
         }
 
         public PeopleViewModel All()
         {
-            MemoryPeopleRepo MPRepo = new MemoryPeopleRepo();
-            PeopleViewModel peopleVM = new PeopleViewModel();
-            peopleVM.peopleList = MPRepo.Read();
             
-            return peopleVM;
+            //PeopleViewModel peopleVM = new PeopleViewModel();
+            
+            //peopleVM.peopleList = _peopleRepo.Read();
+            
+            PeopleViewModel peopleViewModel = new PeopleViewModel { peopleList = _peopleRepo.Read() };
+            return peopleViewModel;
         }
 
         public Person Edit(int id, Person person)
         {
-            throw new NotImplementedException();
+            Person personToEdit = _peopleRepo.Update(person);
+            List<Person> perToUpdate = _peopleRepo.Read();
+            perToUpdate.Insert(id, personToEdit);
+            return personToEdit;
         }
 
         public PeopleViewModel FindBy(PeopleViewModel search)
         {
-            throw new NotImplementedException();
+            List<Person> perList = new List<Person>();
+
+            foreach (Person item in  _peopleRepo.Read())
+            {
+                if (item.Name.Contains(search.FilterText, StringComparison.OrdinalIgnoreCase))
+                {
+                    search.peopleList.Add(item);
+                }
+            }
+
+            return search;
         }
 
         public Person FindBy(int id)
         {
-            throw new NotImplementedException();
+            Person perToFind = _peopleRepo.Read(id);
+            return perToFind;
         }
 
         public bool Remove(int id)
         {
-            throw new NotImplementedException();
+            Person perToRemove = FindBy(id);
+            return _peopleRepo.Delete(perToRemove);
+         
         }
         
     }

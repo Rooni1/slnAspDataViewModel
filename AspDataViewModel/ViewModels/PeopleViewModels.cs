@@ -8,8 +8,9 @@ namespace AspDataViewModel.ViewModels
 {
     public class PeopleViewModel
     {
-        public CreatePersonViewModel CreatePersonViewModel { get; set; }
-        public List<Person> peopleList { get; set; }
+        public CreatePersonViewModel CreatePersonVM { get; set; }
+        public List<Person> peopleList = new List<Person>();
+        public string FilterText { get; set; }
 
 
 

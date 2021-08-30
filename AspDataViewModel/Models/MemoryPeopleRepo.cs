@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AspDataViewModel.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,9 +17,9 @@ namespace AspDataViewModel.Models
             return ++personId;
         }
    
-        public Person Create(string name,string phoneNumber,string city)
+        public Person Create(CreatePersonViewModel createPersonVM)
         {
-            Person createPerson = new Person{Id =IdCounter(),Name = name,PhoneNumber = phoneNumber,City=city };
+            Person createPerson = new Person{Id =IdCounter(),Name = createPersonVM.Name, PhoneNumber = createPersonVM.PhoneNumber, City= createPersonVM.City };
 
             personList.Add(createPerson);          
             return createPerson;
@@ -45,8 +46,9 @@ namespace AspDataViewModel.Models
         {
             foreach(Person perToUpdate in personList)
             {
-                if(perToUpdate.Name == person.Name)
+                if(perToUpdate.Id == person.Id)
                 {
+                    perToUpdate.Id = person.Id;
                     perToUpdate.Name = person.Name;
                     perToUpdate.City = person.City;
                     perToUpdate.PhoneNumber = person.PhoneNumber;
