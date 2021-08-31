@@ -12,5 +12,12 @@
     text-align:center;
     background-color:lightblue;
 }
-.infocontainer{
-   }
+.flex-row {
+    display:flex;
+    flex-direction:row;
+    justify-items:flex-start;
+    align-items:center;
+}
+.flex-row > div{
+    justify-items:center;
+}

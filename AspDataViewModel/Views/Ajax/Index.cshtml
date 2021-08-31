@@ -1,0 +1,17 @@
+﻿@model PeopleViewModel
+
+<h1>Welcome to People management with Ajax</h1>
+
+
+<row class="flex-row" >
+    <input type="submit" onclick="ShowPerson()" value="People" />
+    <div>
+        <label>Enter Id : </label>
+        <input type="number" min="1" placeholder="Enter id" id="personId"/>
+    </div>
+    <input type="submit" onclick="PerDetail()" value="Details"/>
+    <input type="button" onclick="Delete()" value="Delete" id="deleteBtn"/>
+</row>
+
+
+<div id="result" > </div>

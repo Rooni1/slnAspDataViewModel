@@ -1,0 +1,20 @@
+﻿@model List<Person>
+
+<div class="row container-fluid m-2">
+    <div class="col">
+        <div class="row header-table heading">
+            <div class="col">ID</div>
+            <div class="col">Name</div>
+            <div class="col">Phone number</div>
+            <div class="col">City</div>
+            <div class="col"></div>
+            <br />
+        </div>
+
+        @foreach (Person per in Model)
+        {
+            <partial name="../People/_peoplePartialView.cshtml" model="per" />
+        }
+
+    </div>
+</div>

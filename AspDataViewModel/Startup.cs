@@ -38,12 +38,16 @@ namespace AspDataViewModel
             app.UseRouting();
             app.UseStaticFiles();
             app.UseSession();
+            app.UseHttpsRedirection();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=People}/{action=PeopleView}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "custom",
+                    pattern: "{controller=Ajax}/{action=Index}/{id?}");
             });
         }
     }
