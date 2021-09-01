@@ -18,6 +18,7 @@ namespace AspDataViewModel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPeopleRepo,MemoryPeopleRepo>();
+           
             services.AddScoped<IPeopleService,PeopleService>();
             services.AddControllersWithViews();
             services.AddSession(option =>
