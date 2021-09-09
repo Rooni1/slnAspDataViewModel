@@ -1,0 +1,39 @@
+﻿@model Person
+
+
+<form asp-action="Edit" method="post" asp-controller="Ajax" class="editPerson">
+    
+    <input asp-for="@Model.Id" id="name" placeholder="Name" hidden/>
+
+    <label asp-for="Name"></label>
+    <input asp-for="@Model.Name" id="name" placeholder="Name" />
+
+    <label asp-for="PhoneNumber"></label>
+    <input asp-for="@Model.PhoneNumber" id="phoneNumber" placeholder="Phone Number" />
+
+    <label asp-for="@Model.city"></label>
+    <input asp-for="@Model.city" id="city" placeholder="City" />
+
+    <input type="submit" value="Update">
+</form>
+
+
+
+
+<div class="editContainer">
+    @*<div class="row fs-5">
+        <div class="col">Person Id</div>
+        <div class="col">Name</div>
+        <div class="col">Phone Number</div>
+        <div class="col"> City</div>
+        <div class="col"></div>
+        <div class="col"></div>
+
+    </div>*@
+   
+
+    <partial name="../People/_peoplePartialView.cshtml" model="Model" />
+
+    
+
+</div>

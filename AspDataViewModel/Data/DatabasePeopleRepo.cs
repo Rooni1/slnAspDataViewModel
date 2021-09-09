@@ -14,6 +14,9 @@ namespace AspDataViewModel.Models
 
         }
         public DbSet<Person> People { get; set; }
+        public DbSet<Country> Country { get; set; }
+        public DbSet<City> cities { get; set; }
+
     }
 
 }

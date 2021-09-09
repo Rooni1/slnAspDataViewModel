@@ -17,21 +17,23 @@ namespace AspDataViewModel.Models
             _peopleRepo = peopleRepo;
                 
         }
-       
-        public  Person Add(CreatePersonViewModel CPview)
+
+        public Person Add(CreatePersonViewModel CPview)
         {
 
-            MemoryPeopleRepo MPRepo = new MemoryPeopleRepo();
+            //MemoryPeopleRepo MPRepo = new MemoryPeopleRepo();
 
             //Person newperson = MPRepo.Create(CPview);
 
-            CreatePersonViewModel newperson = new CreatePersonViewModel
-            {
-                Name = CPview.Name,
-                City = CPview.City,
-                PhoneNumber = CPview.PhoneNumber
-            };
-            return MPRepo.Create(newperson);
+            //CreatePersonViewModel newperson = new CreatePersonViewModel
+            //{
+            //    Name = CPview.Name,
+            //    City = CPview.City,
+            //    PhoneNumber = CPview.PhoneNumber
+            //};
+            //return MPRepo.Create(newperson);
+            return _peopleRepo.Create(CPview);
+            //return MPRepo.Create(CPview);
             //return newperson;
 
         }
@@ -50,20 +52,20 @@ namespace AspDataViewModel.Models
         public Person Edit(int id, Person person)
         {
             Person personToEdit = _peopleRepo.Update(person);
-            List<Person> perToUpdate = _peopleRepo.Read();
-            perToUpdate.Insert(id, personToEdit);
             return personToEdit;
         }
 
         public PeopleViewModel FindBy(PeopleViewModel search)
         {
             List<Person> perList = new List<Person>();
+          
 
             foreach (Person item in  _peopleRepo.Read())
             {
                 if (item.Name.Contains(search.FilterText, StringComparison.OrdinalIgnoreCase))
                 {
                     search.peopleList.Add(item);
+                    break;
                 }
             }
 
@@ -78,7 +80,7 @@ namespace AspDataViewModel.Models
 
         public bool Remove(int id)
         {
-            Person perToRemove = FindBy(id);
+            Person perToRemove = _peopleRepo.Read(id);
             return _peopleRepo.Delete(perToRemove);
          
         }

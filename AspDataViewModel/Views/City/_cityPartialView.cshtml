@@ -1,0 +1,12 @@
+﻿
+@model City
+
+<div class="row">
+    <div class="col">@Model.CityId</div>
+    <div class="col">@Model.CityName</div>
+    <div class="col">@Model.country.CountryName</div>
+
+    <div class="col"><a asp-action="UpDate" asp-route-id="@Model.CityId">Edit</a></div>
+    <div class="col"><a asp-action="Delete" asp-route-id="@Model.CityId">Delete</a></div>
+
+</div>

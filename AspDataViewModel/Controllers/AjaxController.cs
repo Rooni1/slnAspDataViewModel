@@ -1,5 +1,6 @@
 ﻿using AspDataViewModel.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,13 @@ namespace AspDataViewModel.Controllers
     public class AjaxController : Controller
     {
         private readonly IPeopleService _ipeopleService;
+        private readonly DatabasePeopleRepo _peopleContext;
 
 
-        public AjaxController(IPeopleService ipeopleService)
+        public AjaxController(IPeopleService ipeopleService, DatabasePeopleRepo peopleContext)
         {
             _ipeopleService = ipeopleService;
+            _peopleContext = peopleContext;
         }
        
         public IActionResult Index()
@@ -23,7 +26,10 @@ namespace AspDataViewModel.Controllers
         }
         public IActionResult People()
         {
-            return PartialView("_peopleAjaxPartialView", _ipeopleService.All().peopleList);
+
+            //return PartialView("_peopleAjaxPartialView", _ipeopleService.All().peopleList);
+            return PartialView("_peopleAjaxPartialView",
+                                _peopleContext.People.Include(p => p.city).ToList());
         }
         public IActionResult Delete(int id)
         {
@@ -54,6 +60,19 @@ namespace AspDataViewModel.Controllers
             }
 
         }
+       
+        public IActionResult UpDate(int id)
+        {
+            return PartialView("_editPeoplePartialView", _ipeopleService.FindBy(id));
+        }
+       
+        [HttpPost]
+        public IActionResult Edit(int id,Person upDatedPerson)
+        {
+            return PartialView("_editPeoplePartialView", _ipeopleService.Edit(id, upDatedPerson));
+            
+        }
+
 
     }
 }

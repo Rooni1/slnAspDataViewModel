@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using AspDataViewModel.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AspDataViewModel.ViewModels
 {
@@ -11,7 +12,7 @@ namespace AspDataViewModel.ViewModels
     {
         public MemoryPeopleRepo memoryPeopleRepo { get; set; }
        
-        //public int PersonId{get;}
+        public int PersonId{get;}
         
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Please enter name"), MaxLength(30)]
@@ -24,13 +25,13 @@ namespace AspDataViewModel.ViewModels
         public string City { get; set; }
 
 
-       [DataType(DataType.PhoneNumber)]
+        [DataType(DataType.PhoneNumber)]
         [Required(ErrorMessage = "Please enter Phone Number"), MaxLength(30)]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
+        //public SelectList selectList { get; set; }
 
-       
-        
+
 
 
     }

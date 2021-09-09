@@ -13,12 +13,19 @@
             <input asp-for="CreatePersonVM.PhoneNumber" id="phoneNumber" placeholder="Phone Number" />
 
             @*<label asp-for="City"></label>*@
-            <input asp-for="CreatePersonVM.City" id="city" placeholder="City" />
+            <!--<input asp-for="CreatePersonVM.City" id="city" placeholder="City" />-->
+            <select asp-for="CreatePersonVM.City">
+                <option value="" disabled>Select a City</option>
+                @foreach (City items in Model.cityList)
+                {
+                    <option value="@items.CityId"> @items.CityName</option>
+                }
+            </select>
 
-            <button type="submit">Add Person</button>
-            <input type="button" onclick ="formReset()" value="Reset" id="reset"  />
+            <button type="submit" onclick="return confirm('Data is saved in Database')">Add Person</button>
+            <input type="button" onclick="formReset()" value="Reset" id="reset" />
             <input type="submit" value="Update" asp-action="UpDate">
-            
+
 
         </form>
         <form class="searchform" asp-action="FindByViewModel" method="post">
@@ -35,6 +42,7 @@
             <div class="col">Name</div>
             <div class="col">Phone Number</div>
             <div class="col"> City</div>
+            <div class="col"> Country</div>
             <div class="col"></div>
             <div class="col"></div>
 

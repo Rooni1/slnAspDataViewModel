@@ -1,0 +1,32 @@
+﻿@model AspDataViewModel.ViewModels.CountryViewModel
+
+<h2>Add Country</h2>
+<form asp-action="CountryView" asp-controller="Country" method="post" id="countryForm">
+
+
+    <input asp-for="CreateCountryVM.CountryName" id="name" placeholder="Name" />
+
+
+    <button type="submit" onclick="return confirm('Data is saved in Database')">Add Country</button>
+    <input type="button" onclick="formReset()" value="Reset" id="reset" />
+</form>
+<div>@ViewBag.Message </div>
+
+
+<div class="infocontainer">
+    <div class="row fs-5">
+        <div class="col">Country Id</div>
+        <div class="col">Country Name</div>
+        <div class="col"></div>
+        <div class="col"></div>
+
+    </div>
+    @foreach (var item in Model.countryList)
+    {
+
+        <partial name="_countryPartialView.cshtml" model="item" />
+
+
+    }
+
+</div>

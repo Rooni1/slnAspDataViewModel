@@ -1,0 +1,10 @@
+﻿@model Country
+
+<div class="row">
+    <div class="col">@Model.CountryId</div>
+    <div class="col">@Model.CountryName</div>
+  
+    <div class="col"><a asp-action="UpDate" asp-route-id="@Model.CountryId">Edit</a></div>
+    <div class="col"><a asp-action="Delete" asp-route-id="@Model.CountryId">Delete</a></div>
+
+</div>

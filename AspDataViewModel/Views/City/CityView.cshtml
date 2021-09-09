@@ -1,0 +1,41 @@
+﻿@model AspDataViewModel.ViewModels.CityViewModel
+
+<h2>Add Country</h2>
+<form asp-action="CityView" asp-controller="City" method="post" id="cityForm">
+
+
+    <input asp-for="createCityVM.CityName" id="name" placeholder="Name" />
+
+    <select asp-for="createCityVM.Country">
+        <option value="" >Select a Country</option>
+        @foreach (Country items in Model.countriesList)
+        {
+            <option value="@items.CountryId" > @items.CountryName</option>
+        }
+    </select>
+
+
+    <button type="submit" onclick="return confirm('Data is saved in Database')">Add City</button>
+    <input type="button" onclick="formReset()" value="Reset" id="reset" />
+</form>
+<div>@ViewBag.Message </div>
+
+
+<div class="infocontainer">
+    <div class="row fs-5">
+        <div class="col">City Id</div>
+        <div class="col">City Name</div>
+        <div class="col">Country Name</div>
+        <div class="col"></div>
+        <div class="col"></div>
+
+    </div>
+    @foreach (var item in Model.cityList)
+    {
+
+        <partial name="_cityPartialView.cshtml" model="item" />
+
+
+    }
+
+</div>

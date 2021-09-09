@@ -10,6 +10,7 @@ namespace AspDataViewModel.ViewModels
     {
         public CreatePersonViewModel CreatePersonVM { get; set; }
         public List<Person> peopleList = new List<Person>();
+        public List<City> cityList = new List<City>();
         public string FilterText { get; set; }
 
 
