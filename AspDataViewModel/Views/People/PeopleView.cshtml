@@ -22,6 +22,15 @@
                 }
             </select>
 
+            <select asp-for="CreatePersonVM.languageArray" id="selectedId" multiple>
+                <option value="" disabled>Select a Language</option>
+                @foreach (var items in Model.languageList)
+                {
+                    <option value="@items.LanguageId"> @items.LanguageName</option>
+                }
+            </select>
+
+           
             <button type="submit" onclick="return confirm('Data is saved in Database')">Add Person</button>
             <input type="button" onclick="formReset()" value="Reset" id="reset" />
             <input type="submit" value="Update" asp-action="UpDate">
@@ -32,30 +41,33 @@
             <label asp-for="FilterText">Serach Person </label>
             <input asp-for="FilterText" />
         </form>
+<br/>
 
 
         
 
-    <div class="infocontainer">
-        <div class="row fs-5">
-            <div class="col">Person Id</div>
-            <div class="col">Name</div>
-            <div class="col">Phone Number</div>
-            <div class="col"> City</div>
-            <div class="col"> Country</div>
-            <div class="col"></div>
-            <div class="col"></div>
+        <div class="infocontainer">
+            <div class="row fs-5">
+                <div class="col">Person Id</div>
+                <div class="col">Name</div>
+                <div class="col">Phone Number</div>
+                <div class="col">City</div>
+                <div class="col">Country</div>
+                <div class="col">Language</div>
+
+                <div class="col"></div>
+                <div class="col"></div>
+
+            </div>
+            @foreach (var item in Model.peopleList)
+            {
+
+                <partial name="_peoplePartialView.cshtml" model="item" />
+
+            }
+          
 
         </div>
-            @foreach (var item in Model.peopleList)
-             {
-                
-                <partial name="_peoplePartialView.cshtml" model="item"/> 
-                
-              
-             }
-
-    </div>
 
 
 

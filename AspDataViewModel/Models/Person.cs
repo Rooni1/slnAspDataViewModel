@@ -15,9 +15,12 @@ namespace AspDataViewModel.Models
         //public string City { get; set; }
 
         //navigation peropertiies
+
         //public int CityId { get; set; }
         public City city { get; set; }
         //public int CountryId { get; set; }
+
+        public List<PersonLanguage> personLanguagesList { get; set; }
 
 
 

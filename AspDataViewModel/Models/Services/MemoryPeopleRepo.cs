@@ -49,6 +49,8 @@ namespace AspDataViewModel.Models
         public Person Read(int id)
         {
             personList = _databasePeopleRepo.People.Include(p => p.city).ToList();
+            personList = _databasePeopleRepo.People.Include(p => p.personLanguagesList).ToList();
+
             foreach (Person per in personList )
             {
                 if(per.Id == id)

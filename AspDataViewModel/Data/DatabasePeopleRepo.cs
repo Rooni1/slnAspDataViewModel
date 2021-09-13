@@ -13,9 +13,23 @@ namespace AspDataViewModel.Models
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PersonLanguage>().HasOne(L => L.Language)
+                                                 .WithMany(La => La.personLanguagesList)
+                                                 .HasForeignKey(Li => Li.LanguageId);
+
+            modelBuilder.Entity<PersonLanguage>().HasOne(L => L.Person)
+                                                .WithMany(La => La.personLanguagesList)
+                                                .HasForeignKey(Li => Li.PersonId);
+        }
         public DbSet<Person> People { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<City> cities { get; set; }
+
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<PersonLanguage> PersonLanguages { get; set; }
+
 
     }
 

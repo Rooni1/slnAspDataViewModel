@@ -1,0 +1,11 @@
+﻿
+@model Language
+   
+<div class="row">
+    <div class="col">@Model.LanguageId</div>
+    <div class="col">@Model.LanguageName</div>
+
+    <div class="col"><a asp-action="UpDate" asp-route-id="@Model.LanguageId">Edit</a></div>
+    <div class="col"><a asp-action="Delete" asp-route-id="@Model.LanguageId">Delete</a></div>
+
+</div>

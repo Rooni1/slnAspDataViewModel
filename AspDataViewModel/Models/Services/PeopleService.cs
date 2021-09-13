@@ -21,17 +21,6 @@ namespace AspDataViewModel.Models
         public Person Add(CreatePersonViewModel CPview)
         {
 
-            //MemoryPeopleRepo MPRepo = new MemoryPeopleRepo();
-
-            //Person newperson = MPRepo.Create(CPview);
-
-            //CreatePersonViewModel newperson = new CreatePersonViewModel
-            //{
-            //    Name = CPview.Name,
-            //    City = CPview.City,
-            //    PhoneNumber = CPview.PhoneNumber
-            //};
-            //return MPRepo.Create(newperson);
             return _peopleRepo.Create(CPview);
             //return MPRepo.Create(CPview);
             //return newperson;
@@ -40,11 +29,7 @@ namespace AspDataViewModel.Models
 
         public PeopleViewModel All()
         {
-            
-            //PeopleViewModel peopleVM = new PeopleViewModel();
-            
-            //peopleVM.peopleList = _peopleRepo.Read();
-            
+                 
             PeopleViewModel peopleViewModel = new PeopleViewModel { peopleList = _peopleRepo.Read() };
             return peopleViewModel;
         }

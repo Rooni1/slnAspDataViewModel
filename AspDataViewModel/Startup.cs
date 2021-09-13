@@ -28,12 +28,13 @@ namespace AspDataViewModel
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IPeopleRepo,MemoryPeopleRepo>();
-           
             services.AddScoped<IPeopleService,PeopleService>();
             services.AddScoped<ICountryRepo, CountryRepo>();
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ICityRepo, CityRepo>();
             services.AddScoped<ICityService, CityService>();
+            services.AddScoped<ILanguageRepo, LanguageRapo>();
+            services.AddScoped<ILanguageService, LanguageService>();
             services.AddControllersWithViews();
             services.AddSession(option =>
             {

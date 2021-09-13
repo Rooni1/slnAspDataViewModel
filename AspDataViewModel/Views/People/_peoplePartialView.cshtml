@@ -6,6 +6,13 @@
     <div class="col">@Model.PhoneNumber</div>
     <div class="col">@Model.city.CityName</div>
     @*<div class="col">@Model.city.country.CountryName</div>*@
+<div class="col">
+    @foreach (var items in Model.personLanguagesList)
+    {
+        <span class="personLanguageId @Model.Id language">@items.Language.LanguageName</span>
+    }
+
+</div>
     <div class="col"><a asp-action="UpDate" asp-route-id="@Model.Id">Edit</a></div>
     <div class="col"><a asp-action="Delete" asp-route-id="@Model.Id">Delete</a></div>
 

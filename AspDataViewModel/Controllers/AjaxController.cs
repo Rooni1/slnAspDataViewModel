@@ -1,4 +1,5 @@
 ﻿using AspDataViewModel.Models;
+using AspDataViewModel.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -26,10 +27,15 @@ namespace AspDataViewModel.Controllers
         }
         public IActionResult People()
         {
+            PeopleViewModel peopleVM = new PeopleViewModel();
+            peopleVM.peopleList = _peopleContext.People.Include(p => p.city).ToList();
+            peopleVM.personLanguagesList = _peopleContext.PersonLanguages.Include(l => l.Language).ToList();
+            peopleVM.personLanguagesList = _peopleContext.PersonLanguages.Include(l => l.Person).ToList();
+            peopleVM.countryList = _peopleContext.Country.ToList();
+            return PartialView("_peopleAjaxPartialView", _ipeopleService.All().peopleList);
+            //return View(PeopleView ,peopleVM);
+           
 
-            //return PartialView("_peopleAjaxPartialView", _ipeopleService.All().peopleList);
-            return PartialView("_peopleAjaxPartialView",
-                                _peopleContext.People.Include(p => p.city).ToList());
         }
         public IActionResult Delete(int id)
         {

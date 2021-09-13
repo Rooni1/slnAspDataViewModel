@@ -1,0 +1,26 @@
+﻿
+@model AspDataViewModel.ViewModels.LanguageViewModel
+
+<h2>Add Language</h2>
+<form asp-action="LanguageView" asp-controller="Language" method="post" id="LanguageForm">
+
+   <input asp-for="createLanguageVM.LanguageName" id="name" placeholder="Language">
+
+    <button type="submit" onclick="return confirm('Data is saved in Database')">Add Language</button>
+    <input type="button" onclick="formReset()" value="Reset" id="reset" />
+</form>
+
+<div class="infocontainer">
+    <div class="row fs-5">
+        <div class="col">Language Id</div>
+        <div class="col">Language</div>
+        <div class="col"></div>
+        <div class="col"></div>
+
+    </div>
+    @foreach (var item in Model.LanguagesList)
+     {
+        <partial name="languagePartialView.cshtml" model="item" />
+     }
+
+</div>

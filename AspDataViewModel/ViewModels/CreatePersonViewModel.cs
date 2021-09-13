@@ -13,7 +13,8 @@ namespace AspDataViewModel.ViewModels
         public MemoryPeopleRepo memoryPeopleRepo { get; set; }
        
         public int PersonId{get;}
-        
+        public int LanguageId { get; set; }
+
         [DataType(DataType.Text)]
         [Required(ErrorMessage = "Please enter name"), MaxLength(30)]
         [Display(Name = "Name")]
@@ -30,6 +31,8 @@ namespace AspDataViewModel.ViewModels
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
         //public SelectList selectList { get; set; }
+        public int[] languageArray { get; set; }
+        public string Language { get; set; }
 
 
 

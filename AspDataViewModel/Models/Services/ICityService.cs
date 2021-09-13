@@ -10,7 +10,7 @@ namespace AspDataViewModel.Models.Services
     {
         public City Add(CreateCityVM createCityVM);
         CityViewModel All();
-        CityViewModel FindBy(CountryViewModel search);
+        CityViewModel FindBy(CityViewModel search);
         City FindBy(int id);
         bool Remove(int id);
     }

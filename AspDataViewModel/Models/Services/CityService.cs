@@ -26,7 +26,7 @@ namespace AspDataViewModel.Models.Services
             return cityViewModel;
         }
 
-        public CityViewModel FindBy(CountryViewModel search)
+        public CityViewModel FindBy(CityViewModel search)
         {
             throw new NotImplementedException();
         }
