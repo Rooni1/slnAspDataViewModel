@@ -40,11 +40,11 @@ namespace AspDataViewModel.Controllers
             //Creating Person and adding to database
             Person addPerson = new Person();
             addPerson = _ipeopleService.Add(createPersonVM);
-            _peopleContext.Add(addPerson); 
-            _peopleContext.SaveChanges();
+            //_peopleContext.Add(addPerson);
+            //_peopleContext.SaveChanges();
 
             // Ading values to personlanguage table
-            for(int i = 0; i< createPersonVM.languageArray.Length;i++)
+            for (int i = 0; i< createPersonVM.languageArray.Length;i++)
             {
                 PersonLanguage perLanguage = new PersonLanguage
                 {

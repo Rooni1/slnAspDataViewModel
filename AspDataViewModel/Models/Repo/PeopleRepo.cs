@@ -1,41 +1,36 @@
-﻿using AspDataViewModel.Models.Repo;
-using AspDataViewModel.ViewModels;
+﻿using AspDataViewModel.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AspDataViewModel.Models
+namespace AspDataViewModel.Models.Repo
 {
-    public class MemoryPeopleRepo : IPeopleRepo
+    public class PeopleRepo : IPeopleRepo
     {
         private static List<Person> personList = new List<Person>();
-        private static int personId;
         DatabasePeopleRepo _databasePeopleRepo;
         ICityRepo _cityRepo;
-
-        public MemoryPeopleRepo(DatabasePeopleRepo databasePeopleRepo,ICityRepo cityRepo)
+        public PeopleRepo(DatabasePeopleRepo databasePeopleRepo,ICityRepo cityRepo)
         {
-            _cityRepo = cityRepo;
             _databasePeopleRepo = databasePeopleRepo;
+            _cityRepo = cityRepo;
+                
         }
-
-
-        public int PersonId { get { return personId; } }
-
-        private static int IdCounter()
-        {
-            return ++personId;
-        }
-   
         public Person Create(CreatePersonViewModel createPersonVM)
         {
             City myCity = _cityRepo.Read(Convert.ToInt32(createPersonVM.City));
-            Person createPerson = new Person{Name = createPersonVM.Name, 
-                PhoneNumber = createPersonVM.PhoneNumber,city = myCity};
+            Person createPerson = new Person
+            {
+                Name = createPersonVM.Name,
+                PhoneNumber = createPersonVM.PhoneNumber,
+                city = myCity
+            };
+            _databasePeopleRepo.Add(createPerson);
+            _databasePeopleRepo.SaveChanges();
 
-            personList.Add(createPerson);          
+            personList.Add(createPerson);
             return createPerson;
         }
 
@@ -51,9 +46,9 @@ namespace AspDataViewModel.Models
             personList = _databasePeopleRepo.People.Include(p => p.city).ToList();
             personList = _databasePeopleRepo.People.Include(p => p.personLanguagesList).ToList();
 
-            foreach (Person per in personList )
+            foreach (Person per in personList)
             {
-                if(per.Id == id)
+                if (per.Id == id)
                 {
                     return per;
                 }
@@ -74,7 +69,7 @@ namespace AspDataViewModel.Models
                 }
             }
             return null;
-            
+
         }
 
         public bool Delete(Person person)
@@ -83,9 +78,8 @@ namespace AspDataViewModel.Models
             _databasePeopleRepo.SaveChanges();
             //personList.Remove(person);
             return true;
-           
+
         }
 
-       
     }
 }

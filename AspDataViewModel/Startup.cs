@@ -27,7 +27,7 @@ namespace AspDataViewModel
         }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IPeopleRepo,MemoryPeopleRepo>();
+            services.AddScoped<IPeopleRepo,PeopleRepo>();
             services.AddScoped<IPeopleService,PeopleService>();
             services.AddScoped<ICountryRepo, CountryRepo>();
             services.AddScoped<ICountryService, CountryService>();
