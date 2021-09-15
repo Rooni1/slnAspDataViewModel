@@ -21,6 +21,7 @@ namespace AspDataViewModel.Models
         //public int CountryId { get; set; }
 
         public List<PersonLanguage> personLanguagesList { get; set; }
+      
 
 
 

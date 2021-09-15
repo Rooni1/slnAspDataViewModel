@@ -29,10 +29,15 @@ namespace AspDataViewModel.Controllers
        public IActionResult PeopleView()
         {
             PeopleViewModel peopleVM = new PeopleViewModel();
+           
             peopleVM.cityList = _peopleContext.cities.ToList();
             peopleVM.languageList = _peopleContext.Languages.ToList();
+            peopleVM.peopleList = _peopleContext.People.Include(p => p.city).ToList();
+            peopleVM.personLanguagesList = _peopleContext.PersonLanguages.Include(l => l.Language).ToList();
+            peopleVM.personLanguagesList = _peopleContext.PersonLanguages.Include(l => l.Person).ToList();
+            peopleVM.countryList = _peopleContext.Country.ToList();
 
-             return View(peopleVM);
+            return View(peopleVM);
         }
         [HttpPost]
         public IActionResult PeopleView(CreatePersonViewModel createPersonVM)
