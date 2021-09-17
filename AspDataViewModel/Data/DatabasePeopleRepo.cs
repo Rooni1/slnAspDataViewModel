@@ -1,4 +1,5 @@
 ﻿using AspDataViewModel.ViewModels;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AspDataViewModel.Models 
 {
-    public class DatabasePeopleRepo: DbContext
+    public class DatabasePeopleRepo: IdentityDbContext
     {
         public DatabasePeopleRepo(DbContextOptions<DatabasePeopleRepo> options):base(options)
         {
@@ -15,14 +16,17 @@ namespace AspDataViewModel.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<PersonLanguage>().HasOne(L => L.Language)
                                                  .WithMany(La => La.personLanguagesList)
                                                  .HasForeignKey(Li => Li.LanguageId);
 
             modelBuilder.Entity<PersonLanguage>().HasOne(L => L.Person)
-                                                .WithMany(La => La.personLanguagesList)
-                                                .HasForeignKey(Li => Li.PersonId);
+                                                .WithMany(La => La.personLanguagesList);
+          
         }
+        
         public DbSet<Person> People { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<City> cities { get; set; }

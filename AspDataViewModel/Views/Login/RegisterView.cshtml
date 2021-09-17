@@ -1,0 +1,48 @@
+﻿@model AspDataViewModel.ViewModels.RegisterViewModel
+
+
+<div class="container" style="background-color:lightblue">
+    <div class="row justify-content-center align-items-center" >
+        <div class="col-sm-4 col-md-4 col-lg"-4>
+            <h1 class="mb-3">Register</h1>
+            <form  asp-action="RegisterView" asp-controller="Login" method="post">
+                <div asp-validation-summary="All" class="text-danger"> </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="createRegVM.FirstName"> First Name</label>
+                    <input type="text" class="form-control" asp-for="createRegVM.FirstName" />
+                    <span asp-validation-for="createRegVM.FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class=" form-label" asp-for=" createRegVM.LastName"> Last Name</label>
+                    <input type="text" asp-for="createRegVM.LastName" class="form-control" />
+                    <span asp-validation-for="createRegVM.LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="createRegVM.DateOfBirth"> Date Of Birth</label>
+                    <input type="date" asp-for="createRegVM.DateOfBirth" class="form-control" />
+                    <span asp-validation-for="createRegVM.DateOfBirth" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="createRegVM.Email"> E-mail</label>
+                    <input type="email" asp-for="createRegVM.Email" class="form-control" />
+                    <span asp-validation-for="createRegVM.Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="createRegVM.Password">Password</label>
+                    <input type="password" asp-for="createRegVM.Password" class="form-control" />
+                    <span asp-validation-for="createRegVM.Password" class="text-danger"></span>
+                </div>   
+                <div class="mb-3">
+                    <label class="form-label" asp-for="createRegVM.ConfromPassword">Confrom Password</label>
+                    <input type="password" asp-for="createRegVM.ConfromPassword" class="form-control" />
+                    <span asp-validation-for="createRegVM.ConfromPassword" class="text-danger"></span>
+                </div>
+                <div>
+                    <input type="submit" style="margin-bottom:20px" value="Register"/>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

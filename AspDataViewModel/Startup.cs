@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using AspDataViewModel.Models.Repo;
 using AspDataViewModel.Models.Services;
+using Microsoft.AspNetCore.Identity;
 
 namespace AspDataViewModel
 {
@@ -36,6 +37,10 @@ namespace AspDataViewModel
             services.AddScoped<ILanguageRepo, LanguageRapo>();
             services.AddScoped<ILanguageService, LanguageService>();
             services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                    .AddEntityFrameworkStores<DatabasePeopleRepo>();
+
             services.AddSession(option =>
             {
                 option.IdleTimeout = TimeSpan.FromMinutes(15);
@@ -57,6 +62,8 @@ namespace AspDataViewModel
             app.UseStaticFiles();
             app.UseSession();
             app.UseHttpsRedirection();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

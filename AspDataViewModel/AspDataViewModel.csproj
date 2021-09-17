@@ -11,9 +11,12 @@
     <Compile Remove="Migrations\20210907163219_relationshipAdded.Designer.cs" />
     <Compile Remove="Migrations\20210907171943_relationshipAdded.cs" />
     <Compile Remove="Migrations\20210907171943_relationshipAdded.Designer.cs" />
+    <Compile Remove="Migrations\20210916132104_newcolumns.cs" />
+    <Compile Remove="Migrations\20210916132104_newcolumns.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.18">
