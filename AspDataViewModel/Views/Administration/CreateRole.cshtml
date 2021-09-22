@@ -1,0 +1,26 @@
+﻿@model AspDataViewModel.ViewModels.UserRoleViewModel
+
+
+<div class="container" style="background-color:lightblue">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-4 col-md-4 col-lg" -4>
+            <h1 class="mb-3">Create New Role</h1>
+            <form asp-action="CreateRole" asp-controller="Administration" method="post">
+                <div asp-validation-summary="All" class="text-danger"> </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="createUserRoleVM.RoleName"> First Name</label>
+                    <input type="text" class="form-control" asp-for="createUserRoleVM.RoleName" />
+                    <span asp-validation-for="createUserRoleVM.RoleName" class="text-danger"></span>
+                </div>
+              
+                <div>
+                    <input type="submit" style="margin-bottom:20px" value="Create Role" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+

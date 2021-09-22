@@ -1,6 +1,7 @@
 ﻿using AspDataViewModel.Models;
 using AspDataViewModel.Models.Services;
 using AspDataViewModel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace AspDataViewModel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CountryController : Controller
     {
-
+       
         private readonly ICountryService _iCountryService;
         private readonly DatabasePeopleRepo _countryContext;
 

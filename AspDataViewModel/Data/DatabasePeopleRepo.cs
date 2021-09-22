@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AspDataViewModel.Models 
 {
-    public class DatabasePeopleRepo: IdentityDbContext
+    public class DatabasePeopleRepo: IdentityDbContext<ApplicationUser>
     {
         public DatabasePeopleRepo(DbContextOptions<DatabasePeopleRepo> options):base(options)
         {

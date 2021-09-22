@@ -7,10 +7,10 @@
     <input asp-for="createCityVM.CityName" id="name" placeholder="Name" />
 
     <select asp-for="createCityVM.Country">
-        <option value="" >Select a Country</option>
+        
         @foreach (Country items in Model.countriesList)
         {
-            <option value="@items.CountryId" > @items.CountryName</option>
+            <option value="@items.CountryId"> @items.CountryName</option>
         }
     </select>
 

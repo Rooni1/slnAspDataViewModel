@@ -7,6 +7,7 @@ using AspDataViewModel.Models;
 using AspDataViewModel.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using AspDataViewModel.Models.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspDataViewModel.Controllers
 {
@@ -39,6 +40,8 @@ namespace AspDataViewModel.Controllers
 
             return View(peopleVM);
         }
+
+        [Authorize]
         [HttpPost]
         public IActionResult PeopleView(CreatePersonViewModel createPersonVM)
         {
@@ -70,7 +73,8 @@ namespace AspDataViewModel.Controllers
             //return RedirectToAction(nameof(PeopleView));
             return View(peopleVM);
         }
-                
+
+        [Authorize]
         public IActionResult UpDate(int id,Person perToedit)
         {
             Person newPerUpdated =  _ipeopleService.Edit(id, perToedit);
@@ -81,6 +85,7 @@ namespace AspDataViewModel.Controllers
             return RedirectToAction(nameof(PeopleView));
 
         }
+        [Authorize]
         public IActionResult FindByViewModel(PeopleViewModel peopleVM)
         {
            
@@ -91,12 +96,14 @@ namespace AspDataViewModel.Controllers
            
             
         }
+        [Authorize]
         public IActionResult FindById(int id)
         {
 
              return View("_peoplePartialView", _ipeopleService.FindBy(id));
 
         }
+        [Authorize]
         public IActionResult Delete(int id)
         {
 

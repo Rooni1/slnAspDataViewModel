@@ -38,7 +38,7 @@ namespace AspDataViewModel
             services.AddScoped<ILanguageService, LanguageService>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddIdentity<IdentityUser,IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<DatabasePeopleRepo>();
 
             services.AddSession(option =>

@@ -13,6 +13,8 @@
     <Compile Remove="Migrations\20210907171943_relationshipAdded.Designer.cs" />
     <Compile Remove="Migrations\20210916132104_newcolumns.cs" />
     <Compile Remove="Migrations\20210916132104_newcolumns.Designer.cs" />
+    <Compile Remove="Migrations\20210920083751_addedUserRelatedFields.cs" />
+    <Compile Remove="Migrations\20210920083751_addedUserRelatedFields.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

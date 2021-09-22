@@ -1,6 +1,7 @@
 ﻿using AspDataViewModel.Models;
 using AspDataViewModel.Models.Services;
 using AspDataViewModel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace AspDataViewModel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CityController : Controller
     {
         private readonly ICityService _iCityService;

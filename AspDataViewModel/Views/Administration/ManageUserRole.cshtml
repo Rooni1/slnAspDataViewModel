@@ -1,0 +1,40 @@
+﻿@model AspDataViewModel.ViewModels.CreateManageRoleViewModel
+
+<div class="container" style="background-color:lightblue">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-4 col-md-4 col-lg" -4>
+            <h1 class="mb-3">Manage User Role</h1>
+            <form asp-action="ManageUserRole" asp-controller="Administration" method="post">
+                <div asp-validation-summary="All" class="text-danger"> </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="RoleName">Roles</label>
+                    <select asp-for="RoleId">
+                        <option value="">Select a Role</option>
+                        @foreach (var items in Model.userRoleList)
+                        {
+                            <option value="@items.Id">@items.Name</option>
+                        }
+                    </select>
+                    <span asp-validation-for="userRoleList" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" asp-for="applicationUserList">User</label>
+                    <select asp-for="Register.UserId">
+                        <option value="">Select a User</option>
+                        @foreach (var item in Model.applicationUserList)
+                        {
+                            <option value="@item.Id">@item.UserName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="applicationUserList" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <input type="submit" style="margin-bottom:20px"  value="Assign Role" formmethod="post" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

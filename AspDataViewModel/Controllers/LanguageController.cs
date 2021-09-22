@@ -1,6 +1,7 @@
 ﻿using AspDataViewModel.Models;
 using AspDataViewModel.Models.Services;
 using AspDataViewModel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace AspDataViewModel.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class LanguageController : Controller
     {
         private readonly ILanguageService _languageSevice;

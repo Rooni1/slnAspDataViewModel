@@ -1,5 +1,6 @@
 ﻿using AspDataViewModel.Models;
 using AspDataViewModel.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace AspDataViewModel.Controllers
 {
+    [Authorize]
     public class AjaxController : Controller
     {
         private readonly IPeopleService _ipeopleService;
@@ -37,6 +39,8 @@ namespace AspDataViewModel.Controllers
            
 
         }
+
+        [Authorize(Roles ="Admin")]
         public IActionResult Delete(int id)
         {
            

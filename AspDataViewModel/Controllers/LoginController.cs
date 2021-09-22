@@ -13,11 +13,11 @@ namespace AspDataViewModel.Controllers
     public class LoginController : Controller
     {
         private readonly DatabasePeopleRepo _loginContext;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
        
-        public LoginController(DatabasePeopleRepo loginContext, UserManager<IdentityUser> userManager, 
-                               SignInManager<IdentityUser> signInManager)
+        public LoginController(DatabasePeopleRepo loginContext, UserManager<ApplicationUser> userManager, 
+                               SignInManager<ApplicationUser> signInManager)
         {
             _loginContext = loginContext;
             _userManager = userManager;
@@ -64,9 +64,12 @@ namespace AspDataViewModel.Controllers
             
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser
+                var user = new ApplicationUser
                 {
                     UserName = _regViewModel.createRegVM.Email,
+                    FirstName = _regViewModel.createRegVM.FirstName,
+                    LastName = _regViewModel.createRegVM.LastName,
+                    DateOfBirth = _regViewModel.createRegVM.DateOfBirth,
                     Email = _regViewModel.createRegVM.Email,
                                            
                 };

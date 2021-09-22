@@ -8,6 +8,7 @@ namespace AspDataViewModel.Models
 {
     public class Register
     {
+        public string UserId { get; set; }
         [Required]
         public string FirstName { get; set; }
         [Required]
