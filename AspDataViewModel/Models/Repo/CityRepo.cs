@@ -8,8 +8,8 @@ namespace AspDataViewModel.Models.Repo
 {
     public class CityRepo : ICityRepo
     {
-        private static int cityId;
-        public int CityId { get { return cityId; } }
+        //private static int cityId;
+        //public int CityId { get { return cityId; } }
         private static List<City> cityList = new List<City>();
         DatabasePeopleRepo _cityContext;
         ICountryRepo _countryRepo;

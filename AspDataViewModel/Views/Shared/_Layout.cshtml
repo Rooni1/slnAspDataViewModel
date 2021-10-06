@@ -12,7 +12,7 @@
     <title>People Management</title>
 </head>
 <body>
-    
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Future Solution</a>
@@ -46,18 +46,18 @@
                         </li>
                     }
                     @if (SignInManager.IsSignedIn(User))
-                     {
-                            <li class="nav-item">
-                                <a class="nav-link " asp-controller="Login" asp-action="LogoutView">Logout</a>
-                            </li>
-                     }
-                     else
-                     {
-                            <li class="nav-item">
-                                <a class="nav-link " asp-controller="Login" asp-action="LoginView">Login</a>
-                            </li>
-                     }
-                    </ul>
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Login" asp-action="LogoutView">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link " asp-controller="Login" asp-action="LoginView">Login</a>
+                        </li>
+                    }
+                </ul>
             </div>
         </div>
     </nav>
@@ -68,5 +68,7 @@
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap-5/js/bootstrap.js"></script>
     <script src="~/JS/MyJavaScript.js"></script>
+   
+
 </body>
 </html>
