@@ -15,6 +15,7 @@ using System.Configuration;
 using AspDataViewModel.Models.Repo;
 using AspDataViewModel.Models.Services;
 using Microsoft.AspNetCore.Identity;
+using System.Text.Json.Serialization;
 
 namespace AspDataViewModel
 {
@@ -28,6 +29,12 @@ namespace AspDataViewModel
         }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().AddJsonOptions(o =>
+            {
+                o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+                o.JsonSerializerOptions.MaxDepth = 0;
+            });
+
             services.AddScoped<IPeopleRepo,PeopleRepo>();
             services.AddScoped<IPeopleService,PeopleService>();
             services.AddScoped<ICountryRepo, CountryRepo>();
@@ -48,6 +55,18 @@ namespace AspDataViewModel
             });
             services.AddDbContext<DatabasePeopleRepo>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DbCString")));
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins("*")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            }
+                );
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
